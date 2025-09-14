@@ -38,18 +38,18 @@ export default function PerformanceCards({ data }: PerformanceCardsProps) {
       color: 'text-yellow-400',
       bgColor: 'bg-yellow-500/10'
     },
-    {
-      icon: Clock,
-      title: 'Payback Period',
-      value: `${Math.round(optimization_recommendations.payback_period_years)} years`,
-      subtitle: 'Return on investment timeline',
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10'
-    }
+    // {
+    //   icon: Clock,
+    //   title: 'Payback Period',
+    //   value: `${Math.round(optimization_recommendations.payback_period_years)} years`,
+    //   subtitle: 'Return on investment timeline',
+    //   color: 'text-purple-400',
+    //   bgColor: 'bg-purple-500/10'
+    // }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {cards.map((card, index) => (
         <motion.div
           key={card.title}
@@ -71,7 +71,7 @@ export default function PerformanceCards({ data }: PerformanceCardsProps) {
               <div className="mt-4">
                 <Progress 
                   value={Math.min(optimization_recommendations.improvement_percentage, 100)} 
-                  className="h-2"
+                  className="h-2 [&>div]:bg-green-500"
                 />
               </div>
             )}

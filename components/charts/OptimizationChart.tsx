@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Target } from 'lucide-react';
+import { Target, TrendingUp, Zap } from 'lucide-react';
 import GlassmorphicCard from '@/components/ui/glassmorphic-card';
 import { SolarData } from '@/lib/types';
 
@@ -80,7 +80,7 @@ export default function OptimizationChart({ data }: OptimizationChartProps) {
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 14px Inter';
     ctx.textAlign = 'center';
-    
+
     ctx.fillText(`${current.toFixed(1)} kWh`, currentX + barWidth / 2, currentY - 10);
     ctx.fillText(`${optimal.toFixed(1)} kWh`, optimalX + barWidth / 2, optimalY - 10);
 
@@ -169,26 +169,54 @@ export default function OptimizationChart({ data }: OptimizationChartProps) {
         />
       </motion.div>
 
-      <div className="grid grid-cols-3 gap-4 mt-6 text-center">
-        <div>
-          <p className="text-sm text-gray-400">Current Annual Output</p>
+      <motion.div
+        className="grid grid-cols-3 gap-4 mt-6 text-center relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.6 }}
+      >
+        <motion.div
+          className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <div className="flex items-center justify-center mb-2">
+            <Zap className="w-4 h-4 text-red-400 mr-1" />
+            <p className="text-sm text-gray-400">Current Annual Output</p>
+          </div>
           <p className="text-lg font-bold text-red-400">
             {optimization_recommendations.current_annual_output.toFixed(1)} kWh
           </p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-400">Potential Improvement</p>
+        </motion.div>
+
+        <motion.div
+          className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 hover:bg-green-500/20 transition-colors cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <div className="flex items-center justify-center mb-2">
+            <TrendingUp className="w-4 h-4 text-green-400 mr-1" />
+            <p className="text-sm text-gray-400">Potential Improvement</p>
+          </div>
           <p className="text-lg font-bold text-green-400">
             +{optimization_recommendations.improvement_kwh.toFixed(1)} kWh
           </p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-400">Optimal Annual Output</p>
+        </motion.div>
+
+        <motion.div
+          className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 hover:bg-green-500/20 transition-colors cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <div className="flex items-center justify-center mb-2">
+            <Target className="w-4 h-4 text-green-400 mr-1" />
+            <p className="text-sm text-gray-400">Optimal Annual Output</p>
+          </div>
           <p className="text-lg font-bold text-green-400">
             {optimization_recommendations.optimal_annual_output.toFixed(1)} kWh
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </GlassmorphicCard>
   );
 }

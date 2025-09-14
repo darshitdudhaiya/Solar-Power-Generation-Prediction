@@ -6,7 +6,7 @@ import { Download, FileText, FileSpreadsheet } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import GlassmorphicCard from '@/components/ui/glassmorphic-card';
 import { SolarData } from '@/lib/types';
-import { downloadCSV, downloadPDF } from '@/lib/report-utils';
+import { downloadCSV, downloadPDF, generateAndDownloadCSV } from '@/lib/report-utils';
 
 interface DownloadReportsProps {
   data: SolarData;
@@ -18,7 +18,7 @@ export default function DownloadReports({ data }: DownloadReportsProps) {
   const handleDownloadCSV = async () => {
     setIsDownloading('csv');
     try {
-      downloadCSV(data);
+      generateAndDownloadCSV(data,true,true);
     } catch (error) {
       console.error('Error downloading CSV:', error);
     } finally {
@@ -113,11 +113,11 @@ export default function DownloadReports({ data }: DownloadReportsProps) {
             </div>
           </div>
 
-          <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+          {/* <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
             <p className="text-sm text-blue-300">
               <strong>Note:</strong> Reports include daily, weekly, and monthly predicted generation values, as well as recommendations for optimal panel placement.
             </p>
-          </div>
+          </div> */}
         </GlassmorphicCard>
       </motion.div>
     </div>

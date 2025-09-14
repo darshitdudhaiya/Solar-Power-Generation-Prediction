@@ -50,7 +50,7 @@ export default function RecommendationsPanel({ data }: RecommendationsPanelProps
                     {optimization_recommendations.optimal_tilt}°
                   </span>
                 </div>
-                <Progress value={(optimization_recommendations.optimal_tilt / 90) * 100} className="h-2" />
+                <Progress value={(optimization_recommendations.optimal_tilt / 90) * 100} className="h-2 [&>div]:bg-green-500" />
               </div>
 
               <div>
@@ -60,7 +60,7 @@ export default function RecommendationsPanel({ data }: RecommendationsPanelProps
                     {optimization_recommendations.optimal_azimuth}°
                   </span>
                 </div>
-                <Progress value={((optimization_recommendations.optimal_azimuth + 180) / 360) * 100} className="h-2" />
+                <Progress value={((optimization_recommendations.optimal_azimuth + 180) / 360) * 100} className="h-2 [&>div]:bg-green-500" />
               </div>
 
               <div className="pt-4 border-t border-white/10">
