@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ButtonHTMLAttributes, ReactNode } from "react";
 import { MapPin, Settings, Calendar, Zap, Loader2, Search, Sun } from "lucide-react";
 
 // GlassmorphicCard component
@@ -12,27 +12,50 @@ const GlassmorphicCard: React.FC<{ children: React.ReactNode; className?: string
 
 // ----------------- Custom Components -----------------
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
   size?: "sm" | "md" | "lg" | "xl";
+  variant?: "primary" | "secondary"; // optional for theming
 }
+
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-12 py-6 text-lg",
+  xl: "px-16 py-8 text-xl",
+};
+
 const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   disabled,
   size = "md",
   className = "",
+  variant = "primary",
   ...props
-}) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`px-4 py-2 w-full max-w-xs rounded font-medium transition-all ${className}`}
-    {...props}
-  >
-    {children}
-  </button>
-);
+}) => {
+  // Define primary theme gradient + hover + shadow
+  const baseClasses = `
+    rounded-2xl font-semibold transition-all duration-300 transform 
+    shadow-2xl hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed
+    flex items-center justify-center
+  `;
 
+  const variantClasses = variant === "primary"
+    ? "bg-gradient-to-r from-yellow-500 to-green-600 hover:from-yellow-600 hover:to-green-700 text-white hover:shadow-yellow-400/25"
+    : "bg-gray-200 text-gray-800 hover:bg-gray-300 shadow-md";
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseClasses} ${variantClasses} ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 const Input: React.FC<InputProps> = ({ className = "", ...props }) => (
   <input

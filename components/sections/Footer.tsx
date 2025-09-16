@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="relative z-10 mt-8 text-center text-xs text-gray-400 py-2">
-                © 2025 YourToolName · Built with ❤️ by Darshit · Powered by AI & Solar Data
+                © 2025 SolarCast · Built with ❤️ by Darshit · Powered by AI & Solar Data
             </div>
         </footer>
     )

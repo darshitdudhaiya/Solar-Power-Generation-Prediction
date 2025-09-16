@@ -4,6 +4,12 @@ export const solarData: SolarData = {
   "location_analysis": {
     "latitude": 23.0215374,
     "longitude": 72.5800568,
+    "location_name": "Ahmedabad, India",
+    "panel_area": 10,
+    "current_tilt": 30,
+    "current_azimuth": 180,
+    "start_date": "2024-01-01",
+    "end_date": "2024-12-31",
     "solar_potential_rating": "Poor",
     "best_months": [9],
     "worst_months": [9]

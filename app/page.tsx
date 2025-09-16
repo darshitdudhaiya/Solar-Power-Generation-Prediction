@@ -11,6 +11,7 @@ import { fetchSolarAnalysis } from '@/lib/api';
 import { SolarData } from '@/lib/types';
 import { solarData as mockSolarData } from '@/lib/mock-data';
 import Footer from '@/components/sections/Footer';
+import MicroHeader from '@/components/ui/Microheader';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -117,6 +118,8 @@ export default function Home() {
         className="relative z-10"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-green-900/30" />
+
+        <MicroHeader />
 
         <HeroSection />
 

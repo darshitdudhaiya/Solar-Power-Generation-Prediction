@@ -348,7 +348,7 @@ export default function ForecastChart({ data }: ForecastChartProps) {
           <div className="flex items-center">
             <BarChart3 className="w-6 h-6 text-blue-400 mr-3" />
             <div>
-              <h3 className="text-xl font-semibold text-white">5-Day Power Forecast</h3>
+              <h3 className="text-xl font-semibold text-white">7-Day Power Forecast</h3>
               <p className="text-sm text-gray-400">Theoretical panel output (kWh)</p>
             </div>
           </div>
