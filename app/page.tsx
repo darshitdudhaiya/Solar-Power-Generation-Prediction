@@ -10,6 +10,7 @@ import DownloadReports from '@/components/sections/DownloadReports';
 import { fetchSolarAnalysis } from '@/lib/api';
 import { SolarData } from '@/lib/types';
 import { solarData as mockSolarData } from '@/lib/mock-data';
+import Footer from '@/components/sections/Footer';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,21 +31,21 @@ export default function Home() {
     setAnalysisStep('analyzing');
     setError(null);
     console.log(params)
-    
+
     try {
       // Format dates for the API (today and 30 days from now)
       const today = new Date();
       const endDate = new Date(today);
       endDate.setDate(today.getDate() + 30);
-      
+
       const formattedStartDate = today.toISOString().split('T')[0];
       const formattedEndDate = endDate.toISOString().split('T')[0];
-      
+
       // Parse location - could be coordinates or a location name
       let lat = null;
       let lon = null;
       let locationName = params.location;
-      
+
       // Check if location is in coordinate format (contains a comma)
       if (params.location.includes(',')) {
         const [latitude, longitude] = params.location.split(',');
@@ -52,7 +53,7 @@ export default function Home() {
         lon = parseFloat(longitude.trim());
         locationName = `Lat: ${lat}, Lon: ${lon}`;
       }
-      
+
       const apiParams = {
         lat: lat,
         lon: lon,
@@ -63,7 +64,7 @@ export default function Home() {
         start_date: formattedStartDate,
         end_date: formattedEndDate
       };
-      
+
       // Use the actual API instead of mock data
       try {
         const data = await fetchSolarAnalysis(apiParams);
@@ -115,8 +116,10 @@ export default function Home() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative z-10"
       >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-green-900/30" />
+
         <HeroSection />
-        
+
         <div className="container mx-auto px-4 py-20 space-y-20">
           {/* Input Section */}
           <motion.section
@@ -125,8 +128,8 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="relative"
           >
-            <InputPanel 
-              onAnalyze={handleAnalyze} 
+            <InputPanel
+              onAnalyze={handleAnalyze}
               isAnalyzing={analysisStep === 'analyzing'}
               error={error}
             />
@@ -163,6 +166,7 @@ export default function Home() {
             </>
           )}
         </div>
+        <Footer />
       </motion.main>
     </div>
   );

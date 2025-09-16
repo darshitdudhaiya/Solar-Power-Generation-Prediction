@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MapPin, Settings, Calendar, Zap, Loader2, Search } from "lucide-react";
+import { MapPin, Settings, Calendar, Zap, Loader2, Search, Sun } from "lucide-react";
 
 // GlassmorphicCard component
-const GlassmorphicCard = ({ children, className = "" }) => (
+const GlassmorphicCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => (
   <div className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-xl ${className}`}>
     {children}
   </div>
@@ -158,7 +158,7 @@ export default function InputPanel({
             }
           });
 
-        setSuggestions([...new Set(cityResults)]); // Remove duplicates
+        setSuggestions(Array.from(new Set(cityResults))); // Remove duplicates
       } catch (error) {
         console.error('Error fetching cities:', error);
         setSuggestions([]);
@@ -197,13 +197,14 @@ export default function InputPanel({
       <div className="max-w-6xl mx-auto text-white p-6 sm:p-8">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-            Configure Your Solar System
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">
+            Set Up Your Solar Forecast
           </h2>
           <p className="text-gray-300 text-base sm:text-lg">
-            Choose your location method and panel details
+            Enter your location and panel details get instant AI-powered predictions
           </p>
         </div>
+
 
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Location */}
@@ -397,17 +398,17 @@ export default function InputPanel({
             }}
             disabled={isAnalyzing}
             size="xl"
-            className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 sm:px-16 py-4 sm:py-6 text-lg sm:text-xl font-semibold rounded-2xl shadow-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="bg-gradient-to-r from-yellow-500 to-green-600 hover:from-yellow-600 hover:to-green-700 text-white px-8 sm:px-16 py-4 sm:py-6 text-lg sm:text-xl font-semibold rounded-2xl shadow-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
             {isAnalyzing ? (
               <>
                 <Loader2 className="mr-3 w-6 h-6 animate-spin" />
-                Analyzing...
+                Predicting your solar output...
               </>
             ) : (
               <>
-                <Zap className="mr-3 w-6 h-6" />
-                Analyze System
+                <Sun className="mr-3 w-6 h-6" />
+                Run Prediction
               </>
             )}
           </Button>

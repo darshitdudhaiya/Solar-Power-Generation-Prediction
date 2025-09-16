@@ -16,9 +16,10 @@ It provides a user-friendly interface to input parameters and visualize the comp
 
 - **Data Visualization**  
   Presents the returned solar analysis report in a clear and organized manner, including:
-  - Executive summary of solar potential and savings.  
-  - Charts or tables for performance metrics and weather impact.  
-  - Optimal panel configuration and financial projections.  
+
+  - Executive summary of solar potential and savings.
+  - Charts or tables for performance metrics and weather impact.
+  - Optimal panel configuration and financial projections.
 
 - **Responsive Design**  
   Built with **Next.js** and fully responsive, ensuring a consistent experience across devices.
@@ -28,6 +29,7 @@ It provides a user-friendly interface to input parameters and visualize the comp
 ## ⚙️ Installation and Setup
 
 ### 1. Clone the repository
+
 ```bash
 git clone [repository_url]
 cd [frontend_project_folder]
@@ -45,6 +47,7 @@ yarn install
 
 Ensure your application knows the URL of the backend API.
 Set this in a `.env.local` file:
+
 ```bash
 # .env.local
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000

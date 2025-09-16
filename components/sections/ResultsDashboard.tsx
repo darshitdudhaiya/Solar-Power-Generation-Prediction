@@ -20,7 +20,7 @@ export default function ResultsDashboard({ data }: ResultsDashboardProps) {
         transition={{ duration: 0.8 }}
         className="text-center"
       >
-        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-yellow-400 bg-clip-text text-transparent">
           Solar Analysis Results
         </h2>
         <p className="text-gray-300 text-lg">
