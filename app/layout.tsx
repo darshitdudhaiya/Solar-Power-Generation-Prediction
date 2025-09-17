@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SolarCast – AI-Powered Solar Prediction',
     description: 'Predict your solar power generation with SolarCast using AI and real-world data.',
-    url: 'https://your-vercel-app.vercel.app',
+    url: 'https://solarcast.vercel.app',
     siteName: 'SolarCast',
     images: [
       {
-        url: 'https://your-vercel-app.vercel.app/og-image.png',
+        url: 'https://solarcast.vercel.app/og.png',
         width: 1200,
         height: 630,
         alt: 'SolarCast AI Solar Prediction',
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SolarCast – AI-Powered Solar Prediction',
     description: 'Predict your solar power generation with SolarCast using AI and real-world data.',
-    site: '@YourTwitterHandle', // optional
-    creator: '@YourTwitterHandle', // optional
-    images: ['https://your-vercel-app.vercel.app/og-image.png'],
+    site: '@DarshitDudhaiya', // optional
+    creator: '@DarshitDudhaiya', // optional
+    images: ['https://solarcast.vercel.app/og.png'],
   },
 };
 
