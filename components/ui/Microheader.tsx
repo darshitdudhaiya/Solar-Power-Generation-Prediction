@@ -42,7 +42,7 @@ export default function MicroHeader() {
 
                 {/* Product Hunt Badge */}
                 <a
-                    href="https://www.producthunt.com/posts/your-producthunt-link"
+                    href="https://www.producthunt.com/products/solarcast?launch=solarcast"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center space-x-1 bg-orange-500 hover:bg-orange-600 px-3 py-1 rounded-xl text-white text-xs sm:text-sm font-medium shadow-md transition-all duration-700 ease-out transform hover:scale-105

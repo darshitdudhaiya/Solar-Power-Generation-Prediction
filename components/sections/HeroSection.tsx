@@ -63,7 +63,7 @@ export default function HeroSection() {
           {/* Optional Product Hunt badge */}
           <div className="mt-6">
             <a
-              href="https://www.producthunt.com/"
+              href="https://www.producthunt.com/products/solarcast?launch=solarcast"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-white transition"
