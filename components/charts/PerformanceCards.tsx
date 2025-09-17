@@ -70,7 +70,7 @@ export default function PerformanceCards({ data }: PerformanceCardsProps) {
             {card.title === 'Optimal Potential' && (
               <div className="mt-4">
                 <Progress 
-                  value={Math.min(optimization_recommendations.improvement_percentage, 100)} 
+                  value={Math.min(Math.max(optimization_recommendations.improvement_percentage || 0, 0), 100)} 
                   className="h-2 [&>div]:bg-green-500"
                 />
               </div>

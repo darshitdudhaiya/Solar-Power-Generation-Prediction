@@ -50,7 +50,7 @@ export default function RecommendationsPanel({ data }: RecommendationsPanelProps
                     {optimization_recommendations.optimal_tilt}°
                   </span>
                 </div>
-                <Progress value={(optimization_recommendations.optimal_tilt / 90) * 100} className="h-2 [&>div]:bg-green-500" />
+                <Progress value={Math.min(Math.max((optimization_recommendations.optimal_tilt / 90) * 100 || 0, 0), 100)} className="h-2 [&>div]:bg-green-500" />
               </div>
 
               <div>
@@ -60,7 +60,7 @@ export default function RecommendationsPanel({ data }: RecommendationsPanelProps
                     {optimization_recommendations.optimal_azimuth}°
                   </span>
                 </div>
-                <Progress value={((optimization_recommendations.optimal_azimuth + 180) / 360) * 100} className="h-2 [&>div]:bg-green-500" />
+                <Progress value={Math.min(Math.max(((optimization_recommendations.optimal_azimuth + 180) / 360) * 100 || 0, 0), 100)} className="h-2 [&>div]:bg-green-500" />
               </div>
 
               <div className="pt-4 border-t border-white/10">
@@ -211,7 +211,7 @@ export default function RecommendationsPanel({ data }: RecommendationsPanelProps
                   </div>
                   <div>
                     <p className="font-medium mb-1">2. Correct Panel Azimuth</p>
-                    <p className="text-sm text-gray-300">Reorient your panels from {data?.location_analysis?.current_azimuth ?? "N/A"}° to {optimization_recommendations.optimal_azimuth}° azimuth to better align with the sun&apos;s path.</p>
+                    <p className="text-sm text-gray-300">Reorient your panels from {data?.location_analysis?.current_azimuth ?? "N/A"}° to {optimization_recommendations.optimal_azimuth}° azimuth to better align with the sun's path.</p>
                   </div>
                   <div>
                     <p className="font-medium mb-1">3. Follow Maintenance Schedule</p>

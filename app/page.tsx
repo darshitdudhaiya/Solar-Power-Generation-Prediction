@@ -18,9 +18,14 @@ export default function Home() {
   const [analysisStep, setAnalysisStep] = useState<'input' | 'analyzing' | 'results'>('input');
   const [solarData, setSolarData] = useState<SolarData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
 
   useEffect(() => {
     setIsLoaded(true);
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
   }, []);
 
   const handleAnalyze = async (params: {
@@ -94,8 +99,8 @@ export default function Home() {
             key={i}
             className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
             animate={{
-              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-              y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
+              x: [Math.random() * dimensions.width, Math.random() * dimensions.width],
+              y: [Math.random() * dimensions.height, Math.random() * dimensions.height],
             }}
             transition={{
               duration: Math.random() * 20 + 10,
@@ -103,8 +108,8 @@ export default function Home() {
               ease: "linear"
             }}
             initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080),
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
             }}
           />
         ))}

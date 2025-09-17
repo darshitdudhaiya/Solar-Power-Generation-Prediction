@@ -1,28 +1,28 @@
 'use client';
 
 import * as React from 'react';
-import * as ProgressPrimitive from '@radix-ui/react-progress';
 
 import { cn } from '@/lib/utils';
 
+// Temporary simple Progress component to isolate the issue
 const Progress = React.forwardRef<
-  React.ElementRef<typeof ProgressPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { value?: number | null }
 >(({ className, value, ...props }, ref) => (
-  <ProgressPrimitive.Root
+  <div
     ref={ref}
     className={cn(
-      'relative h-4 w-full overflow-hidden rounded-full bg-secondary',
+      'relative h-4 w-full overflow-hidden rounded-full bg-gray-700',
       className
     )}
     {...props}
   >
-    <ProgressPrimitive.Indicator
-      className="h-full w-full flex-1 bg-primary transition-all"
-      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+    <div
+      className="h-full bg-green-500 transition-all duration-300"
+      style={{ width: `${Math.min(Math.max(value || 0, 0), 100)}%` }}
     />
-  </ProgressPrimitive.Root>
+  </div>
 ));
-Progress.displayName = ProgressPrimitive.Root.displayName;
+Progress.displayName = 'Progress';
 
 export { Progress };
